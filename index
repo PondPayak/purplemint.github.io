@@ -1,7 +1,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday!</title>
   <style>
     body {
       margin: 0;
@@ -54,5 +53,6 @@
       document.body.appendChild(balloon);
     }
   </script>
+
 </body>
 </html>
