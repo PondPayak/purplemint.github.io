@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
+    h1 {
+      margin-top: 40px;
+      color: #d94f4f;
+      font-size: 3rem;
+      text-shadow: 2px 2px #fff;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 30px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    input[type="file"] {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 HBD 🎂</h1>
+  <input type="file" id="imageUploader" multiple accept="image/*" />
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const imageUploader = document.getElementById('imageUploader');
+    const gallery = document.getElementById('gallery');
+
+    imageUploader.addEventListener('change', function () {
+      gallery.innerHTML = ''; // clear old images
+      Array.from(this.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          gallery.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  </script>
+</body>
+</html>
